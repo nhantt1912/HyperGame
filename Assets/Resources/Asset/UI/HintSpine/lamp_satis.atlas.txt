@@ -1,0 +1,8 @@
+lamp_satis.png
+size:138,138
+filter:Linear,Linear
+pma:true
+icon_hint
+bounds:2,2,94,134
+wire
+bounds:98,52,21,84
