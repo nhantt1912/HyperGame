@@ -1,21 +1,24 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 
 public class PictureCollageLevel : BaseLevelDrag
 {
-    [SerializeField] private List<Draggable> listItemDraggables;
+    
+    [ReadOnly,SerializeField] private List<DraggableExt> listItemDraggables;
 
     public override void Init(int levelId)
     {
         base.Init(levelId);
-        listItemDraggables.ForEach(x => x.OnMouseUpAction += OnDropItem);
+        listItemDraggables.ForEach(x => x.OnCompleteAction += OnCompleteItem);
     }
 
-    private void OnDropItem()
+    private void OnCompleteItem()
     {
         _count++;
         CheckCountComplete();
     }
+
 }

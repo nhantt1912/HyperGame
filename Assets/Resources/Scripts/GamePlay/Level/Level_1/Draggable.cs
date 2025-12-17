@@ -8,38 +8,37 @@ public class Draggable : MonoBehaviour
     public Action OnMouseDownAction;
     public Action OnMouseUpAction;
     
-    private Vector3 _startPos;
-    
-    private bool _isDrag;
-    
+    protected bool _isDrag;
+
+    private BoxCollider2D _boxCollider;
     private void Start()
     {
-        
-    }
-    
-    private void OnMouseDown()
-    {
-        OnMouseDownAction?.Invoke();
-        
-        _startPos = transform.position;
-        _isDrag = true;
+        _boxCollider = GetComponent<BoxCollider2D>();
     }
 
-    private void OnMouseUp()
+    protected virtual void OnMouseDown()
+    {
+        OnMouseDownAction?.Invoke();
+        _isDrag = true;
+    }
+    
+    protected virtual void OnMouseUp()
     {
         OnMouseUpAction?.Invoke();
         _isDrag = false;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if(!_isDrag)return;
         
         Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         pos.z = 0;
         transform.position = pos;
-        
     }
     
-    
+    public void SetEnable(bool enable)
+    {
+        _boxCollider.enabled = enable;
+    }
 }
