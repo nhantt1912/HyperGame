@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EventDefine 
 {
+    public struct OnBackHome{}
+    
     public struct OnSelectLevel
     {
         public int levelId;

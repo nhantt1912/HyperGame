@@ -10,6 +10,7 @@ public class WinPopup : PopupBase
     [SerializeField] private Button nextBTN;
     private void Start()
     {
+        Debug.Log("Win Popup");
         homeBTN.onClick?.AddListener(OnClickHomeBTN);
         nextBTN.onClick?.AddListener(OnNextLevel);
         EventManager.AddListener<EventDefine.OnLevelComplete>(OnLevelComplete);
@@ -18,6 +19,7 @@ public class WinPopup : PopupBase
     private void OnClickHomeBTN()
     {
         Debug.Log("Home");
+        EventManager.Invoke(new EventDefine.OnBackHome());
         OnHide();
     }
     

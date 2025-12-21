@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class UIBase : MonoBehaviour
 {
-    private CanvasGroup canvasGroup;
+    protected CanvasGroup canvasGroup;
 
     protected virtual void Awake()
     {

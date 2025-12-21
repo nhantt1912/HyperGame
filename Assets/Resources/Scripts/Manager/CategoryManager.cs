@@ -8,6 +8,8 @@ public class CategoryManager : UIBase
     [SerializeField] private LevelItem levelItem;
     [SerializeField] private Transform content;
 
+    private bool _isActive;
+    
     protected override void Awake()
     {
         base.Awake();
@@ -17,6 +19,12 @@ public class CategoryManager : UIBase
     private void OnSelectLevel(EventDefine.OnSelectLevel obj)
     {
         OnHide();
+    }
+
+    public bool ISActive()
+    {
+        _isActive = canvasGroup.alpha == 1 ? true : false;
+        return _isActive;
     }
 
     public void SetUp(MenuType type)
@@ -51,10 +59,10 @@ public class CategoryManager : UIBase
     {
         base.OnHide();
         
-        while (content.childCount > 0)
+        /*while (content.childCount > 0)
         {
             DestroyImmediate(content.GetChild(0).gameObject);
-        }
+        }*/
 
 
     }
