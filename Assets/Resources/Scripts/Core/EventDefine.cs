@@ -6,6 +6,10 @@ public class EventDefine
 {
     public struct OnBackHome{}
     
+    public struct OnReplayLevel{}
+    
+    public struct OnNextLevel{}
+    
     public struct OnSelectLevel
     {
         public int levelId;

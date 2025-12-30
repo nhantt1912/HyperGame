@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     
     private void Start()
     {
-        EventManager.AddListener<EventDefine.OnBackHome>(OnBackHome);;
+        EventManager.AddListener<EventDefine.OnBackHome>(OnBackHome);
         _menuManager.onClickType += OnSelectTypeMode;
         _menuManager.OnShow();
         
