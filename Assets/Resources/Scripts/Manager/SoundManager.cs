@@ -1,20 +1,27 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using MyBox;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Serialization;
 
-public class SoundManager : MonoBehaviour
+public class SoundManager : Singleton<SoundManager>
 {
     [SerializeField] private AudioMixer audioMixer;
     public SortedList<int, AudioSource> playingSound;
     public AudioMixerGroup musicGroup, sfxGroup;
     [SerializeField] private AudioClip clickSound;
+    [SerializeField] private AudioClip bgm;
+    [SerializeField] private AudioSource audioSource;
     
     private void Start()
     {
         SetValue(SoundType.Music,SettingData.settingData[SETTING.MUSIC]);
         SetValue(SoundType.Sfx,SettingData.settingData[SETTING.SOUND]);
+        audioSource.clip = bgm;
+        audioSource.Play();
+        playingSound = new SortedList<int, AudioSource>();
     }
     
     private void SetValue(SoundType soundType,bool value)
@@ -28,13 +35,14 @@ public class SoundManager : MonoBehaviour
         {
             SoundType.Music => "music",
             SoundType.Sfx => "sfx",
-            _ => "music",
+            _ => "Music",
         };
     }
 
-    public void PlayClickSound(AudioClip clip)
+    public void PlayClickSound()
     {
         PlaySFX(clickSound);
+        Debug.Log("Click Sound");
     }
     
     public void PlaySFX(AudioClip clip)

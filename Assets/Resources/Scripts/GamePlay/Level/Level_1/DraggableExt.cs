@@ -12,6 +12,7 @@ public class DraggableExt : Draggable
     public Action OnCompleteAction;
     protected override void OnMouseDown()
     {
+        SoundManager.Instance.PlayClickSound();
         base.OnMouseDown();
     }
 

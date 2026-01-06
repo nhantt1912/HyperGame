@@ -692,6 +692,8 @@ MonoBehaviour:
   musicGroup: {fileID: -3711951231779328087, guid: 8f9c2c8e6ad13994e9797605cf8aab5f, type: 2}
   sfxGroup: {fileID: 3256518925403267746, guid: 8f9c2c8e6ad13994e9797605cf8aab5f, type: 2}
   clickSound: {fileID: 8300000, guid: fdf336b2ad6214b4d9b35e3e07af3747, type: 3}
+  bgm: {fileID: 8300000, guid: a98404223d51f374e8d7eb6ebac910e6, type: 3}
+  audioSource: {fileID: 176488369}
 --- !u!4 &176488371
 Transform:
   m_ObjectHideFlags: 0
@@ -1315,13 +1317,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437156996}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1341214503}
-  m_Father: {fileID: 718941131}
+  m_Father: {fileID: 451745358}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1402,6 +1404,7 @@ RectTransform:
   - {fileID: 478483017}
   - {fileID: 1746988811}
   - {fileID: 1004600118}
+  - {fileID: 437156997}
   m_Father: {fileID: 718941131}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2184,7 +2187,6 @@ RectTransform:
   - {fileID: 2121727686}
   - {fileID: 179897593}
   - {fileID: 451745358}
-  - {fileID: 437156997}
   m_Father: {fileID: 1108946951}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3315,7 +3317,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 250}
   m_SizeDelta: {x: 949, y: 829}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1341214504
