@@ -17,11 +17,16 @@ public class SoundManager : Singleton<SoundManager>
     
     private void Start()
     {
-        SetValue(SoundType.Music,SettingData.settingData[SETTING.MUSIC]);
-        SetValue(SoundType.Sfx,SettingData.settingData[SETTING.SOUND]);
+        ApplySoundSetting();
         audioSource.clip = bgm;
         audioSource.Play();
         playingSound = new SortedList<int, AudioSource>();
+    }
+
+    public void ApplySoundSetting()
+    {
+        SetValue(SoundType.Music,SettingData.settingData[SETTING.MUSIC]);
+        SetValue(SoundType.Sfx,SettingData.settingData[SETTING.SOUND]);
     }
     
     private void SetValue(SoundType soundType,bool value)

@@ -35,7 +35,6 @@ public class SettingPopup : UIBase
 
     private void UpdateUI()
     {
-      
         musicOn.SetActive(SettingData.settingData[SETTING.MUSIC]);
         soundOn.SetActive(SettingData.settingData[SETTING.SOUND]);
         vibrationOn.SetActive(SettingData.settingData[SETTING.VIBRATE]);
@@ -45,12 +44,14 @@ public class SettingPopup : UIBase
     {
         SettingData.SetData(SETTING.MUSIC, !SettingData.settingData[SETTING.MUSIC]);
         musicOn.SetActive(SettingData.settingData[SETTING.MUSIC]);
+        SoundManager.Instance.ApplySoundSetting();
     }
     
     private void OnClickSound()
     {
         SettingData.SetData(SETTING.SOUND, !SettingData.settingData[SETTING.SOUND]);
         soundOn.SetActive(SettingData.settingData[SETTING.SOUND]);
+        SoundManager.Instance.ApplySoundSetting();
     }
     
     private void OnClickVibration()
