@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Serialization;
 
-public class DraggaleAnimation : MonoBehaviour
+public class DraggableAnimationController : MonoBehaviour
 {
     [SerializeField] private bool isRotation;
     [SerializeField] private bool isScale;
