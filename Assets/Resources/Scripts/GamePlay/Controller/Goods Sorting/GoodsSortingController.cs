@@ -1,18 +1,22 @@
+ using System;
  using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GoodsSortingController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private List<BoxItem> _listBoxItem;
+
+    private void Start()
     {
-        
+        EventManager.AddListener<Goods_Sorting.EventDefine.OnDropItem>(OnDropItem);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDropItem(Goods_Sorting.EventDefine.OnDropItem obj)
     {
-        
+        if (obj.itemType == ItemType.MI_30)
+        {
+            
+        }
     }
 }
