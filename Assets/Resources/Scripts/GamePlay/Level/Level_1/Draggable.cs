@@ -11,7 +11,7 @@ public class Draggable : MonoBehaviour
     protected bool _isDrag;
 
     private BoxCollider2D _boxCollider;
-    protected void Start()
+    protected virtual void Start()
     {
         _boxCollider = GetComponent<BoxCollider2D>();
     }

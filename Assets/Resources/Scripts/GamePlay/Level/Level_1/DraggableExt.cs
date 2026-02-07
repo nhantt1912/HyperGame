@@ -11,6 +11,14 @@ public class DraggableExt : Draggable
     [SerializeField] private float distance = 0.1f;
     
     public Action OnCompleteAction;
+    private DraggableAnimationController draggableAnimationController;
+    
+    protected override void Start()
+    {
+        base.Start();
+        draggableAnimationController = GetComponent<DraggableAnimationController>();
+    }
+
     protected override void OnMouseDown()
     {
         SoundManager.Instance.PlayClickSound();
@@ -28,7 +36,10 @@ public class DraggableExt : Draggable
     private void OnCorrectPosition()
     {
         SetEnable(false);
-        transform.DOMove(targetPosition.position, 0.2f);   
+        transform.DOMove(targetPosition.position, 0.2f).OnComplete(() =>
+        {
+            draggableAnimationController.DropSorting(10);
+        });   
         transform.DORotate(Vector3.zero, 0.1f).OnComplete(() =>
         {
             OnCompleteAction?.Invoke();

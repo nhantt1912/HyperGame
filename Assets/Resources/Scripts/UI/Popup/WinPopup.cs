@@ -32,9 +32,10 @@ public class WinPopup : PopupBase
         OnHide();
     }
     
-    private void OnNextLevel()
+    private void OnNextLevel()  
     {
-        
+        OnHide();
+        EventManager.Invoke(new EventDefine.OnNextLevel());
     }
 
     private void OnLevelComplete(EventDefine.OnLevelComplete obj)

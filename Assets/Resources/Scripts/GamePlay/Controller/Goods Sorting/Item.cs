@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using Goods_Sorting;
+using MyBox;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 
@@ -20,33 +21,45 @@ public class Item : MonoBehaviour, IDropHandler,IBeginDragHandler,IEndDragHandle
     
     private bool _isDrag;
     private Vector3 _startPos;
+    private bool _wasDropped;
+
+    private CanvasGroup _canvasGroup;
     
     private void Start()
     {
+        _canvasGroup = GetComponent<CanvasGroup>() ?? gameObject.AddComponent<CanvasGroup>();
+
         if (_isEmpty)
         {
             _itemType = ItemType.None;
-            // nếu ô rỗng thì làm trong suốt ảnh
             if (_imgItem != null)
             {
-                Color c = _imgItem.color;
-                c.a = 0f; // trong suốt
-                _imgItem.color = c;
-                // vẫn giữ enabled = true để có thể thay đổi alpha runtime
-                _imgItem.enabled = true;
+                _imgItem.sprite = null;
+                _imgItem.SetAlpha(0);   
             }
+        }
+        else
+        {
+            _startPos = transform.position;
         }
     }
 
     private void OnDropItem()
     {
-        EventManager.Invoke(new Goods_Sorting.EventDefine.OnDropItem{itemType = _itemType});
+      //  EventManager.Invoke(new Goods_Sorting.EventDefine.OnDropItem{itemType = _itemType});
     }
 
     public void Init(ItemType itemType, Sprite sprite)
     {
         _itemType = itemType;
-        _imgItem.sprite = sprite;
+        if (_imgItem != null)
+        {
+            _imgItem.sprite = sprite;
+            _imgItem.SetAlpha(1);
+            _imgItem.enabled = sprite != null;
+        }
+
+        _isEmpty = itemType == ItemType.None || sprite == null;
     }
 
     public void OnCollect()
@@ -57,90 +70,113 @@ public class Item : MonoBehaviour, IDropHandler,IBeginDragHandler,IEndDragHandle
         });
     }
 
-    public void OnDrop(PointerEventData eventData)
+    public void OnDrop(PointerEventData eventData) 
     {
         GameObject droppedObject = eventData?.pointerDrag;
         if (droppedObject == null)
         {
-            Debug.Log("OnDrop: pointerDrag is null");
             return;
         }
 
-        Item droppedItem = droppedObject.GetComponent<Item>();
+        Item droppedItem = droppedObject.GetComponent<Item>(); // droppedItem là thằng cầm drag
         if (droppedItem == null)
         {
-            Debug.Log("OnDrop: dropped object has no Item component");
             return;
         }
 
-        // THIS (this) is the drop target. Check if target is empty.
+        if (droppedItem == this)
+        {
+            return;
+        }
+
         if (this.IsEmpty)
         {
-            Debug.Log(gameObject.name);
+            droppedItem._wasDropped = true;
 
-            // Copy data from dropped item to this target
             this._itemType = droppedItem._itemType;
+            this._isEmpty = false;
             if (this._imgItem != null && droppedItem._imgItem != null)
             {
-                this._imgItem.sprite = droppedItem._imgItem.sprite;
-                // đặt alpha về 1 (opaque)
-                Color tc = this._imgItem.color;
-                tc.a = 1f; // tương đương 255
-                this._imgItem.color = tc;
+                _imgItem.sprite = droppedItem._imgItem.sprite;
+                this._imgItem.SetAlpha(1);
                 this._imgItem.enabled = true;
-            }
-            else
-            {
-                Debug.LogWarning($"OnDrop: Image missing on target ({gameObject.name}) or source ({droppedObject.name})");
+                _imgItem.raycastTarget = true;
             }
 
-            this._isEmpty = false;
-
-            // Mark source as empty and deactivate it
             droppedItem._isEmpty = true;
             if (droppedItem._imgItem != null)
             {
-                Color sc = droppedItem._imgItem.color;
-                sc.a = 0f;
-                droppedItem._imgItem.color = sc;
+                droppedItem._imgItem.sprite = null;
+                droppedItem._imgItem.SetAlpha(0);
+                droppedItem._imgItem.enabled = true;
+                droppedItem._imgItem.raycastTarget = true;
             }
-            droppedItem.gameObject.SetActive(false);
 
-            // Invoke drop event for the target
+            droppedItem.ReturnToStart(() =>
+            {
+                droppedItem._isDrag = false;
+                droppedItem._itemType = ItemType.None;
+            });
+
             OnDropItem();
         }
         else
         {
-            Debug.LogWarning($"OnDrop: Target ({gameObject.name}) is not empty");
-            // Target already has an item => return the dragged item to its start position
             droppedItem.ReturnToStart();
         }
     }
-
+        
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (_isEmpty) return;
+
         _isDrag = true;
-        // record start position in world space (OnDrag uses ScreenToWorldPoint)
         _startPos = transform.position;
+
+        transform.SetAsLastSibling();
+
+        if (_canvasGroup != null)
+            _canvasGroup.blocksRaycasts = false;
+
+        if (_imgItem != null)
+        {
+            _imgItem.raycastTarget = false;
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (_canvasGroup != null)
+            _canvasGroup.blocksRaycasts = true;
+
+        if (!_wasDropped)
+        {
+            ReturnToStart(() =>
+            {
+                _isDrag = false;
+            });
+        }
+
+        _wasDropped = false;
         _isDrag = false;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         if(!_isDrag) return;
+
         Vector3 pos = Camera.main.ScreenToWorldPoint(eventData.position);
         pos.z = 0;
         transform.position = pos;
     }
 
-    // Return the item back to its recorded start position using world-space tween
-    public void ReturnToStart()
+    private void ReturnToStart(Action onComplete = null)
     {
-        transform.DOMove(_startPos, 0.3f);
+        transform.DOMove(_startPos, 0.3f).OnComplete(() =>
+        {
+            _imgItem.raycastTarget = true;
+            onComplete?.Invoke();
+        });
     }
 }
 

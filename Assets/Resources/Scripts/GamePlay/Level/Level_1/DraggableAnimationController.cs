@@ -15,14 +15,14 @@ public class DraggableAnimationController : MonoBehaviour
     [SerializeField] private SortingGroup sortingGroup;
     private Draggable draggable;
     
-    private int sortiingDefault;
+    private int sortingDefault;
     private void Start()
     {
         draggable = GetComponent<Draggable>();
         draggable.OnMouseDownAction += OnPickItem;
         draggable.OnMouseUpAction += OnDropItem;
         
-        sortiingDefault = sortingGroup.sortingOrder;    
+        sortingDefault = sortingGroup.sortingOrder;    
     }
 
     private void OnPickItem()
@@ -38,13 +38,18 @@ public class DraggableAnimationController : MonoBehaviour
     private void OnDropItem()
     {
         transform?.DOKill();
-        if(isRaiseSorting) sortingGroup.sortingOrder = sortiingDefault;
+        if(isRaiseSorting) sortingGroup.sortingOrder = sortingDefault;
         if(isScale) transform.DOScale(Vector3.one, 0.1f);
         if (isRotation)
         {
             float angleRandom = UnityEngine.Random.Range(-10, 10);
             transform.DORotate(new Vector3(0, 0, angleRandom), 0.1f);
         }
+    }
+    
+    public void DropSorting(int value)
+    {
+        sortingGroup.sortingOrder = value;
     }
 
 }
