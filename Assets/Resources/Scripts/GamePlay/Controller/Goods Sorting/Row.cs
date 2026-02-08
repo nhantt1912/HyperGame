@@ -7,19 +7,35 @@ using UnityEngine;
 public class Row : MonoBehaviour
 {
     [SerializeField] private List<Item> _listItem;
-
+    [SerializeField] private Transform _tfParent;
+        
     public Action OnCollectRow;
-    
-    /*public void InitItem(ItemType itemType,Sprite sprite )
+
+    private void Start()
     {
-        foreach (var item in _listItem)
+        InitRow();
+    }
+
+    private void InitRow()
+    {
+        for (int i = 0; i < 3; i++)
         {
-            item.Init(itemType,sprite);
-        }
-    }*/
+           Item item = _tfParent.GetChild(i).GetComponent<Item>();
+           item.OnDropItem += OnDropItem;
+           _listItem.Add(item);
+        }    
+    }
+
+    private void OnDropItem(Item obj)
+    {
+        Debug.Log(" Item Hold : " + obj);
+        CheckRow();
+    }
 
     public bool AddItemIntoRow(Item item)
     {
+        if(item.IsEmpty) return false;
+        
         for (int i = 0; i < _listItem.Count; i++)
         {
             if (_listItem[i] != null) continue;
@@ -29,24 +45,9 @@ public class Row : MonoBehaviour
         return false;
     }
     
-    
-    public void MoveNextPosition(float value)
+    private void CheckRow()
     {
-        transform.DOLocalMoveY(value,0.2f).SetEase(Ease.OutBack);
-    }
-
-    private void CorrectRow()
-    {
-        foreach (var item in _listItem)
-        {
-            item.OnCollect();
-        }
-        OnCollectRow?.Invoke();
-    }
-
-    public void CheckRow()
-    {
-        bool allSame = AreAllItemsSameType();
+        var allSame = AreAllItemsSameType();
         
         if (allSame)
         {
@@ -56,6 +57,18 @@ public class Row : MonoBehaviour
         {
             Debug.Log("Not all items are same");
         }
+    }
+    
+    private void CorrectRow()
+    {
+        foreach (var item in _listItem)
+        {
+            item.OnCollect();
+        }
+        Debug.Log("Collect Row");
+
+        _listItem.Clear();
+        OnCollectRow?.Invoke();
     }
     
     private bool AreAllItemsSameType()

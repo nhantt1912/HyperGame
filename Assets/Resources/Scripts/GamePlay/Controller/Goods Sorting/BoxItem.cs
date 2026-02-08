@@ -37,7 +37,7 @@ public class BoxItem : MonoBehaviour
 
     private void CollectRow()
     {
-        _listRow[_rowIndex - 1].MoveNextPosition(-65f);
+        
     }
     
     

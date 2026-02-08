@@ -6,15 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="543f7491-7f67-422e-b913-e3e75569b067" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HyperGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HyperGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Puzzle Level Prefabs/Halloween Level.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Puzzle Level Prefabs/Halloween Level.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Controller/Goods Sorting/BoxItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Controller/Goods Sorting/BoxItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Controller/Goods Sorting/GoodsSortingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Controller/Goods Sorting/GoodsSortingController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Controller/Goods Sorting/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Controller/Goods Sorting/Item.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Level/Level_1/Draggable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Level/Level_1/Draggable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Level/Level_1/DraggableAnimationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Level/Level_1/DraggableAnimationController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Level/Level_1/DraggableExt.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Level/Level_1/DraggableExt.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/UI/Popup/WinPopup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/UI/Popup/WinPopup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Controller/Goods Sorting/Row.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Controller/Goods Sorting/Row.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GamePlay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GamePlay.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,9 +24,9 @@
   </component>
   <component name="CopilotUserSelectedModel">
     <selectedModels>
+      <entry key="edit-panel" value="GPT-5 mini" />
       <entry key="chat-panel" value="GPT-5 mini" />
       <entry key="agent-panel" value="GPT-5 mini" />
-      <entry key="edit-panel" value="GPT-5 mini" />
     </selectedModels>
   </component>
   <component name="Git.Settings">
@@ -134,6 +130,7 @@
       <workItem from="1769700696809" duration="3090000" />
       <workItem from="1770391703392" duration="5122000" />
       <workItem from="1770472763651" duration="7167000" />
+      <workItem from="1770528461342" duration="5740000" />
     </task>
     <servers />
   </component>

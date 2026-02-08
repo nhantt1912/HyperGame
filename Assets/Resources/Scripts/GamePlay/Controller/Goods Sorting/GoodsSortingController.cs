@@ -9,14 +9,11 @@ public class GoodsSortingController : MonoBehaviour
 
     private void Start()
     {
-        EventManager.AddListener<Goods_Sorting.EventDefine.OnDropItem>(OnDropItem);
+        EventManager.AddListener<Goods_Sorting.EventDefine. OnDropItem>(OnDropItem);
     }
 
     private void OnDropItem(Goods_Sorting.EventDefine.OnDropItem obj)
     {
-        if (obj.itemType == ItemType.MI_30)
-        {
-            
-        }
+        
     }
 }

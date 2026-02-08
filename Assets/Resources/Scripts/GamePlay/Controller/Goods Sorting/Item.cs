@@ -1,4 +1,4 @@
- using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -19,6 +19,7 @@ public class Item : MonoBehaviour, IDropHandler,IBeginDragHandler,IEndDragHandle
    [SerializeField] private bool _isEmpty;
     public bool IsEmpty => _isEmpty;
     
+    public Action<Item> OnDropItem;
     private bool _isDrag;
     private Vector3 _startPos;
     private bool _wasDropped;
@@ -43,12 +44,6 @@ public class Item : MonoBehaviour, IDropHandler,IBeginDragHandler,IEndDragHandle
             _startPos = transform.position;
         }
     }
-
-    private void OnDropItem()
-    {
-      //  EventManager.Invoke(new Goods_Sorting.EventDefine.OnDropItem{itemType = _itemType});
-    }
-
     public void Init(ItemType itemType, Sprite sprite)
     {
         _itemType = itemType;
@@ -73,57 +68,53 @@ public class Item : MonoBehaviour, IDropHandler,IBeginDragHandler,IEndDragHandle
     public void OnDrop(PointerEventData eventData) 
     {
         GameObject droppedObject = eventData?.pointerDrag;
-        if (droppedObject == null)
-        {
-            return;
-        }
-
+        if (droppedObject == null) return;
         Item droppedItem = droppedObject.GetComponent<Item>(); // droppedItem là thằng cầm drag
-        if (droppedItem == null)
-        {
-            return;
-        }
-
-        if (droppedItem == this)
-        {
-            return;
-        }
-
+        if (droppedItem == null) return;
+        
         if (this.IsEmpty)
         {
-            droppedItem._wasDropped = true;
-
-            this._itemType = droppedItem._itemType;
-            this._isEmpty = false;
-            if (this._imgItem != null && droppedItem._imgItem != null)
-            {
-                _imgItem.sprite = droppedItem._imgItem.sprite;
-                this._imgItem.SetAlpha(1);
-                this._imgItem.enabled = true;
-                _imgItem.raycastTarget = true;
-            }
-
-            droppedItem._isEmpty = true;
-            if (droppedItem._imgItem != null)
-            {
-                droppedItem._imgItem.sprite = null;
-                droppedItem._imgItem.SetAlpha(0);
-                droppedItem._imgItem.enabled = true;
-                droppedItem._imgItem.raycastTarget = true;
-            }
-
-            droppedItem.ReturnToStart(() =>
-            {
-                droppedItem._isDrag = false;
-                droppedItem._itemType = ItemType.None;
-            });
-
-            OnDropItem();
+            AcceptDroppedItem(droppedItem);
+            FinalizeSourceAfterDrop(droppedItem);
+            OnDropItem?.Invoke(droppedItem);
+            
+            EventManager.Invoke(new Goods_Sorting.EventDefine.OnDropItem{itemType = _itemType});
         }
         else
         {
             droppedItem.ReturnToStart();
         }
+    }
+
+    private void AcceptDroppedItem(Item droppedItem)
+    {
+        this._itemType = droppedItem._itemType;
+        this._isEmpty = false;
+        if (this._imgItem != null && droppedItem._imgItem != null)
+        {
+            _imgItem.sprite = droppedItem._imgItem.sprite;
+            this._imgItem.SetAlpha(1);
+            this._imgItem.enabled = true;
+            _imgItem.raycastTarget = true;
+        }
+    }
+
+    private void FinalizeSourceAfterDrop(Item droppedItem)
+    {
+        droppedItem._itemType = ItemType.None;
+        droppedItem._isEmpty = true;
+        droppedItem._wasDropped = true;
+
+        if (droppedItem._imgItem != null)
+        {
+            droppedItem._imgItem.sprite = null;
+            droppedItem._imgItem.SetAlpha(0);
+        }
+
+        droppedItem.ReturnToStart(() =>
+        {
+            droppedItem._isDrag = false;
+        });
     }
         
     public void OnBeginDrag(PointerEventData eventData)
