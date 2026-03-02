@@ -8,18 +8,18 @@ using UnityEngine.Serialization;
 public class SoundManager : Singleton<SoundManager>
 {
     [SerializeField] private AudioMixer audioMixer;
-    public SortedList<int, AudioSource> playingSound;
+    public Dictionary<int, AudioSource> playingSound;
     public AudioMixerGroup musicGroup, sfxGroup;
     [SerializeField] private AudioClip clickSound;
     [SerializeField] private AudioClip bgm;
     [SerializeField] private AudioSource audioSource;
-    
+
     private void Start()
     {
         ApplySoundSetting();
         audioSource.clip = bgm;
         audioSource.Play();
-        playingSound = new SortedList<int, AudioSource>();
+        playingSound = new Dictionary<int, AudioSource>();
     }
 
     public void ApplySoundSetting()
@@ -27,12 +27,12 @@ public class SoundManager : Singleton<SoundManager>
         SetValue(SoundType.Music,SettingData.settingData[SETTING.MUSIC]);
         SetValue(SoundType.Sfx,SettingData.settingData[SETTING.SOUND]);
     }
-    
+
     private void SetValue(SoundType soundType,bool value)
     {
         audioMixer.SetFloat(GetKeyValue(soundType),value ? (int)soundType : -80);
     }
-    
+
     private string GetKeyValue(SoundType soundType)
     {
         return soundType switch
@@ -48,11 +48,11 @@ public class SoundManager : Singleton<SoundManager>
         PlaySFX(clickSound);
         Debug.Log("Click Sound");
     }
-    
+
     public void PlaySFX(AudioClip clip)
     {
         if(clip == null || playingSound == null) return;
-        
+
         int id = clip.GetInstanceID();
         if (playingSound.ContainsKey(id))
         {
@@ -64,7 +64,7 @@ public class SoundManager : Singleton<SoundManager>
             AddAudioSource(clip).Play();
         }
     }
-    
+
     public AudioSource AddAudioSource(AudioClip sfx, bool isSFX = true)
     {
         AudioSource ac = (AudioSource)gameObject.AddComponent(typeof(AudioSource));
