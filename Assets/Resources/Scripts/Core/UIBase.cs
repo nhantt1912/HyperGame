@@ -9,11 +9,18 @@ public abstract class UIBase : MonoBehaviour
 
     protected virtual void Awake()
     {
-        canvasGroup = GetComponent<CanvasGroup>();
+        EnsureCanvasGroup();
+    }
+
+    protected void EnsureCanvasGroup()
+    {
+        if (canvasGroup == null)
+            canvasGroup = GetComponent<CanvasGroup>() ?? gameObject.AddComponent<CanvasGroup>();
     }
 
     public virtual void OnShow()
     {
+        EnsureCanvasGroup();
         canvasGroup.alpha = 1;
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
@@ -22,6 +29,7 @@ public abstract class UIBase : MonoBehaviour
 
     public virtual void OnHide()
     {
+        EnsureCanvasGroup();
         canvasGroup.alpha = 0;
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
