@@ -6,6 +6,7 @@ using UnityEngine.Serialization;
 public class CategoryManager : UIBase
 {
     [SerializeField] private LevelItem levelItem;
+    [SerializeField] private GoodsSortingController _goodSortingUI;
     [SerializeField] private Transform content;
 
     private bool _isActive;
@@ -29,6 +30,9 @@ public class CategoryManager : UIBase
 
     public void SetUp(MenuType type)
     {
+        ClearAllLevelItem();
+        _goodSortingUI.Active(type == MenuType.GoodSorting);
+        
         switch (type)
         {
             case MenuType.HandeMade:
@@ -58,12 +62,14 @@ public class CategoryManager : UIBase
     public override void OnHide()
     {
         base.OnHide();
-        
-        /*while (content.childCount > 0)
+        ClearAllLevelItem();
+    }
+
+    private void ClearAllLevelItem()
+    {
+        while (content.childCount > 0)
         {
             DestroyImmediate(content.GetChild(0).gameObject);
-        }*/
-
-
+        }
     }
 }
