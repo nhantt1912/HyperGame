@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="543f7491-7f67-422e-b913-e3e75569b067" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HyperGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HyperGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/Manager/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/Manager/SoundManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/Core/UIBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/Core/UIBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Category/MenuItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Category/MenuItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Controller/Goods Sorting/GoodsSortingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Controller/Goods Sorting/GoodsSortingController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/Manager/CategoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/Manager/CategoryManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GamePlay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GamePlay.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +39,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Controller/Goods Sorting/Row.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Controller/Hand Made/ScratchLevelController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ScratchCard/Scripts/Editor/ScratchCardMenu.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -131,6 +136,7 @@
       <workItem from="1771766971512" duration="1660000" />
       <workItem from="1772274496483" duration="731000" />
       <workItem from="1772460992130" duration="1203000" />
+      <workItem from="1772550348935" duration="4424000" />
     </task>
     <servers />
   </component>

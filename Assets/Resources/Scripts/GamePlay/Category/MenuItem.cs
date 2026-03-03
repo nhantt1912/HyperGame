@@ -30,5 +30,6 @@ public enum MenuType
 {
     None = 0,
     HandeMade = 1,
-    Puzzle = 2
+    Puzzle = 2,
+    GoodSorting = 3,
 }
