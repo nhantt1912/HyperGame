@@ -19,12 +19,23 @@ public class SettingPopup : UIBase
     [SerializeField] private GameObject soundOn;
     [SerializeField] private GameObject vibrationOn;
         
+    [SerializeField] private Button _homeButton;
+    [SerializeField] private Button _resumeButton;
+    
     private void Start()
     {
         exitButton.onClick?.AddListener(OnHide);
         musicButton.onClick?.AddListener(OnClickMusic);
         soundButton.onClick?.AddListener(OnClickSound);
         vibrationButton.onClick?.AddListener(OnClickVibration);
+        _homeButton?.onClick?.AddListener(OnClickHome);
+        _resumeButton?.onClick?.AddListener(OnHide);
+    }
+
+    private void OnClickHome()
+    {
+        EventManager.Invoke(new EventDefine.OnBackHome());
+        OnHide();
     }
 
     public override void OnShow()

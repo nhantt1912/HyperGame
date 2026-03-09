@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     
     [SerializeField] private TopPanelController _topPanelController;
     
+    [SerializeField] private Transform _content;
     private void Start()
     {
         EventManager.AddListener<EventDefine.OnBackHome>(OnBackHome);

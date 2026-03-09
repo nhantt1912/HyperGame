@@ -10,12 +10,12 @@ public class LevelItem : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI levelName;
     [SerializeField] private Image levelImage;
-
     [SerializeField] private Button button;
     
     [ReadOnly(true)]
     [SerializeField] private int levelId;
 
+    private MenuType levelType;
     private void Start()
     {
         button.onClick.AddListener(OnClickLevelItem);
@@ -23,17 +23,14 @@ public class LevelItem : MonoBehaviour
 
     private void OnClickLevelItem()
     {
-        EventManager.Invoke(new EventDefine.OnSelectLevel{levelId = levelId});
-        
+        EventManager.Invoke(new EventDefine.OnSelectLevel{levelId = levelId, menuType = levelType});
     }
 
-    public void Init(int levelId,string levelName)
+    public void Init(int levelId,string levelName, MenuType levelType)
     {
+        this.levelType = levelType;
         this.levelId = levelId;
         this.levelName.text = levelName;
     }
-    
-    
-    
-    
 }
+

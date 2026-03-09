@@ -12,6 +12,7 @@ public class EventDefine
     
     public struct OnSelectLevel
     {
+        public MenuType menuType;
         public int levelId;
     }
     

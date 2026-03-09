@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
    // [SerializeField] private LevelBase levelBasePrefabs;
     [SerializeField] private SatisLevelData satisLevelData;
+    [SerializeField] private HandMadeLevelData _handMadeLevelData;
     [SerializeField] private Transform content;
 
     private int _indexLevelCurrent;
@@ -20,7 +21,7 @@ public class GameManager : MonoBehaviour
         EventManager.AddListener<EventDefine.OnLevelFail>(OnLevelFail);
         EventManager.AddListener<EventDefine.OnBackHome>(OnBackHome);
         EventManager.AddListener<EventDefine.OnReplayLevel>(OnReplayLevel);
-        EventManager.AddListener<EventDefine.OnNextLevel>(OnNextLevel);;
+        EventManager.AddListener<EventDefine.OnNextLevel>(OnNextLevel);
     }
 
     private void OnReplayLevel(EventDefine.OnReplayLevel obj)
@@ -54,17 +55,38 @@ public class GameManager : MonoBehaviour
 
     private void OnSelectLevel(EventDefine.OnSelectLevel levelItem)
     {
-        Debug.Log(levelItem.levelId);
-        if (satisLevelData.GetLevel(levelItem.levelId) == null)
-        {
-            Debug.Log("Level Not Found");
-            return;
-        }
+        if(levelItem.menuType == MenuType.GoodSorting) return;
         
-        _indexLevelCurrent = levelItem.levelId;
-        LevelBase levelBase = Instantiate(satisLevelData.GetLevel(levelItem.levelId) , content);
-        _levelBaseCurrent = levelBase;
-        levelBase.Init(levelItem.levelId);
+        Debug.Log(levelItem.levelId);
+        switch (levelItem.menuType)
+        {
+            case MenuType.HandeMade:    
+                if (_handMadeLevelData.GetLevel(levelItem.levelId) == null)
+                {
+                    Debug.Log("Level Not Found");
+                    return;
+                }
+                
+                _indexLevelCurrent = levelItem.levelId;
+                LevelBase levelHandMade = Instantiate(_handMadeLevelData.GetLevel(levelItem.levelId) , content);
+                _levelBaseCurrent = levelHandMade;
+                levelHandMade.Init(levelItem.levelId);
+                
+                break;
+            
+            case MenuType.Satis:
+                if (satisLevelData.GetLevel(levelItem.levelId) == null)
+                {
+                    Debug.Log("Level Not Found");
+                    return;
+                }
+                
+                _indexLevelCurrent = levelItem.levelId;
+                LevelBase levelSatis = Instantiate(satisLevelData.GetLevel(levelItem.levelId) , content);
+                _levelBaseCurrent = levelSatis;
+                levelSatis.Init(levelItem.levelId);
+                break;
+        }
     }
     
     private void OnLevelFail(EventDefine.OnLevelFail levelCurrent)

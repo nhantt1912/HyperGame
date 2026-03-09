@@ -8,25 +8,28 @@ public class Row : MonoBehaviour
 {
     [SerializeField] private List<Item> _listItem;
     [SerializeField] private Transform _tfParent;
-        
+    
     public Action OnCollectRow;
 
     private void Start()
     {
-        InitRow();
+       // InitRow();
     }
 
-    private void InitRow()
+    public void InitRow(BoxDataSO boxDataSo)
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < boxDataSo.BoxData.Length; i++)
         {
            Item item = _tfParent.GetChild(i).GetComponent<Item>();
-           item.OnDropItem += OnDropItem;
+           item.Init(
+               boxDataSo.BoxData[i].RowData[i].itemType,
+               boxDataSo.BoxData[i].RowData[i].sprite);
+           item.OnAcceptDroppedItem += OnAcceptDropItem;
            _listItem.Add(item);
         }    
     }
 
-    private void OnDropItem(Item obj)
+    private void OnAcceptDropItem(Item obj)
     {
         Debug.Log(" Item Hold : " + obj);
         CheckRow();
@@ -81,7 +84,9 @@ public class Row : MonoBehaviour
             return false;
 
         var firstType = firstItem.ItemType;
-
+        
+        if(firstType == ItemType.None) return false;
+        
         foreach (var item in _listItem)
         {
             if (item == null)

@@ -14,79 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rowsPerBox: 2
   itemsPerRow: 3
-  listBoxItem:
-  - rowData:
-    - itemData:
-      - itemType: 2
-        sprite: {fileID: 21300000, guid: 9ff7846f5796bc44ca2486138f84d059, type: 3}
-      - itemType: 1
-        sprite: {fileID: 21300000, guid: f51f9e53f9da63347a8cf2a8ef42e95c, type: 3}
-      - itemType: 1
-        sprite: {fileID: 21300000, guid: f51f9e53f9da63347a8cf2a8ef42e95c, type: 3}
-    - itemData:
-      - itemType: 0
-        sprite: {fileID: 21300000, guid: 64555d154db0a8d4e985db9adf4087c7, type: 3}
-      - itemType: 1
-        sprite: {fileID: 21300000, guid: f51f9e53f9da63347a8cf2a8ef42e95c, type: 3}
-      - itemType: 1
-        sprite: {fileID: 21300000, guid: f51f9e53f9da63347a8cf2a8ef42e95c, type: 3}
-  - rowData:
-    - itemData:
-      - itemType: 0
-        sprite: {fileID: 0}
-      - itemType: 0
-        sprite: {fileID: 0}
-      - itemType: 0
-        sprite: {fileID: 0}
-    - itemData:
-      - itemType: 0
-        sprite: {fileID: 0}
-      - itemType: 0
-        sprite: {fileID: 0}
-      - itemType: 0
-        sprite: {fileID: 0}
-  - rowData:
-    - itemData:
-      - itemType: 0
-        sprite: {fileID: 0}
-      - itemType: 0
-        sprite: {fileID: 0}
-      - itemType: 0
-        sprite: {fileID: 0}
-    - itemData:
-      - itemType: 0
-        sprite: {fileID: 0}
-      - itemType: 0
-        sprite: {fileID: 0}
-      - itemType: 0
-        sprite: {fileID: 0}
-  - rowData:
-    - itemData:
-      - itemType: 0
-        sprite: {fileID: 0}
-      - itemType: 0
-        sprite: {fileID: 0}
-      - itemType: 0
-        sprite: {fileID: 0}
-    - itemData:
-      - itemType: 0
-        sprite: {fileID: 0}
-      - itemType: 0
-        sprite: {fileID: 0}
-      - itemType: 0
-        sprite: {fileID: 0}
-  - rowData:
-    - itemData:
-      - itemType: 0
-        sprite: {fileID: 0}
-      - itemType: 0
-        sprite: {fileID: 0}
-      - itemType: 0
-        sprite: {fileID: 0}
-    - itemData:
-      - itemType: 0
-        sprite: {fileID: 0}
-      - itemType: 0
-        sprite: {fileID: 0}
-      - itemType: 0
-        sprite: {fileID: 0}
+  boxes:
+  - slots:
+    - itemType: 0
+    - itemType: 0
+    - itemType: 0
+  - slots:
+    - itemType: 0
+    - itemType: 0
+    - itemType: 0
+  - slots:
+    - itemType: 0
+    - itemType: 0
+    - itemType: 0

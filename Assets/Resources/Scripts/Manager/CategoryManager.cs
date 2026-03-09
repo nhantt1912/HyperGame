@@ -9,6 +9,9 @@ public class CategoryManager : UIBase
     [SerializeField] private GoodsSortingController _goodSortingUI;
     [SerializeField] private Transform content;
 
+    [SerializeField] private HandMadeLevelData _handMadeLevelData;
+    [SerializeField] private SatisLevelData _satisLevelData;
+    
     private bool _isActive;
     
     protected override void Awake()
@@ -37,21 +40,21 @@ public class CategoryManager : UIBase
         {
             case MenuType.HandeMade:
                 
-                for (int i = 1; i < 11; i++)
+                for (int i = 0; i < _handMadeLevelData.ListHandMadeLevel.Count; i++)
                 {
                     LevelItem handMadeItem = Instantiate(levelItem, content);
-                    handMadeItem.Init(i,"Level " + i );
+                    handMadeItem.Init(i,"Level " + (i + 1),type );
                 }
                 
                 // data
                 break;
             
-            case MenuType.Puzzle:
+            case MenuType.Satis:
                 
-                for (int i = 1; i < 16; i++)
+                for (int i = 0; i < _satisLevelData.ListSatisLevel.Count; i++)
                 {
                     LevelItem puzzleItem = Instantiate(levelItem, content);
-                    puzzleItem.Init(i,"Level " + i );
+                    puzzleItem.Init(i,"Level " + (i + 1),type );
                 }
                 
                 // data
@@ -62,7 +65,7 @@ public class CategoryManager : UIBase
     public override void OnHide()
     {
         base.OnHide();
-        ClearAllLevelItem();
+       // ClearAllLevelItem();
     }
 
     private void ClearAllLevelItem()

@@ -1,18 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandMadeLevelData : MonoBehaviour
+[CreateAssetMenu(fileName = "HandMadeLevelData", menuName = "ScriptableObjects/HandMadeLevelData")]
+public class HandMadeLevelData : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private List<HandMadeLevel> _listHandMadeLevel;
+    public List<HandMadeLevel> ListHandMadeLevel => _listHandMadeLevel;
 
-    // Update is called once per frame
-    void Update()
+    public LevelBase GetLevel(int levelId)
     {
-        
+        return _listHandMadeLevel.Find(x => x.levelId == levelId).levelBase;
     }
+    
+}
+[Serializable]
+public class HandMadeLevel
+{
+    public int levelId;
+    public string levelName;
+    public LevelBase levelBase;   
 }
