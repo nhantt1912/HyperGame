@@ -16,36 +16,27 @@ public class Row : MonoBehaviour
        // InitRow();
     }
 
-    public void InitRow(BoxDataSO boxDataSo)
+    public void InitRow(BoxData rowData)
     {
-        for (int i = 0; i < boxDataSo.BoxData.Length; i++)
+        for (int c = 0; c < rowData.RowData.Length; c++)
         {
-           Item item = _tfParent.GetChild(i).GetComponent<Item>();
-           item.Init(
-               boxDataSo.BoxData[i].RowData[i].itemType,
-               boxDataSo.BoxData[i].RowData[i].sprite);
-           item.OnAcceptDroppedItem += OnAcceptDropItem;
-           _listItem.Add(item);
-        }    
+            Item item = _tfParent.GetChild(c).GetComponent<Item>();
+
+            item.Init(
+                rowData.RowData[c].itemType,
+                rowData.RowData[c].sprite
+            );
+
+            item.OnAcceptDroppedItem += OnAcceptDropItem;
+
+            _listItem.Add(item);
+        }
     }
 
     private void OnAcceptDropItem(Item obj)
     {
         Debug.Log(" Item Hold : " + obj);
         CheckRow();
-    }
-
-    public bool AddItemIntoRow(Item item)
-    {
-        if(item.IsEmpty) return false;
-        
-        for (int i = 0; i < _listItem.Count; i++)
-        {
-            if (_listItem[i] != null) continue;
-            _listItem[i] = item;
-            return true;
-        }
-        return false;
     }
     
     private void CheckRow()

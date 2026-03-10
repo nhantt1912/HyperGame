@@ -8,11 +8,12 @@ using UnityEngine.Serialization;
 public class BoxDataSO : ScriptableObject
 {
       public BoxData[] BoxData = new BoxData[3];
+      
 }
 [Serializable]
 public class BoxData
 {
-   public ItemData[] RowData = new ItemData[3];
+   public ItemData[] RowData = new ItemData[3];      
 }
     
 [Serializable]

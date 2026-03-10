@@ -7,21 +7,21 @@ namespace Resources.Scripts.GamePlay.Controller.Goods_Sorting
     [CreateAssetMenu(fileName = "Data Goods Sorting", menuName = "ScriptableObjects/GoodsSortingSO", order = 1)]
     public class LevelSortingData : ScriptableObject
     {
-        [SerializeField] private int rowsPerBox = 3;
-        [SerializeField] private int itemsPerRow = 3;
+        public int width = 3;
+        public int height = 4;
 
-        public List<BoxData> boxes = new List<BoxData>();
-    }
+        public BoxDataSO[] boxes;
 
-    [Serializable]
-    public class BoxData
-    {
-        public SlotData[] slots = new SlotData[3];
-    }
-    
-    [Serializable]
-    public class SlotData
-    {
-        public ItemType itemType;
+        public BoxDataSO GetBox(int x, int y)
+        {
+            int flippedY = height - 1 - y;
+
+            int index = x + flippedY * width;
+
+            if (index < 0 || index >= boxes.Length)
+                return null;
+
+            return boxes[index];
+        }
     }
 }

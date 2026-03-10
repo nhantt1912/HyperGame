@@ -4517,14 +4517,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _boxPrefab: {fileID: 7463027625845216307, guid: da8cda79f26d87b489899ed1a162f818, type: 3}
-  _boxData: {fileID: 11400000, guid: c203ce09d18b5f34096f027b517a5e2a, type: 2}
+  _levelData: {fileID: 11400000, guid: f552fdfa511987f4aa3410d1713b79ab, type: 2}
   grid: {fileID: 1448512707}
-  _width: 3
-  _height: 4
   padding: {x: 0.6, y: 0.1}
   _parent: {fileID: 1448512705}
   _listSkipCells:
-  - {x: 1, y: 3}
+  - {x: 0, y: 0}
 --- !u!1 &1108946947
 GameObject:
   m_ObjectHideFlags: 0
@@ -5794,7 +5792,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448512704}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.7, y: -1.7, z: 0}
+  m_LocalPosition: {x: 0, y: -0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10964,10 +10962,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _boxPrefab: {fileID: 0}
-  _boxData: {fileID: 0}
+  _levelData: {fileID: 0}
   grid: {fileID: 0}
-  _width: 0
-  _height: 0
   padding: {x: 0.2, y: 0.2}
   _parent: {fileID: 0}
   _listSkipCells: []

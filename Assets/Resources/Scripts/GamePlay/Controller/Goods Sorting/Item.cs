@@ -41,11 +41,15 @@ public class Item : MonoBehaviour
 
         if(itemType == ItemType.None)
         {
+            _isEmpty = true;
+            _spriteRenderer.enabled = false;
             _spriteRenderer.sprite = null;
             _spriteRenderer.color = new Color(1,1,1,0);
         }
         else
         {
+            _isEmpty = false;
+            _spriteRenderer.enabled = true;
             _spriteRenderer.sprite = sprite;
             _startPos = transform.position;
 
@@ -131,6 +135,7 @@ public class Item : MonoBehaviour
         _itemType = droppedItem._itemType;
         _isEmpty = false;
 
+        _spriteRenderer.enabled = true;
         _spriteRenderer.sprite = droppedItem._spriteRenderer.sprite;
         _spriteRenderer.color = Color.white;
         
@@ -139,9 +144,11 @@ public class Item : MonoBehaviour
 
     private void FinalizeSourceAfterDrop(Item droppedItem)
     {
+        
         droppedItem._itemType = ItemType.None;
         droppedItem._isEmpty = true;
 
+        droppedItem._spriteRenderer.enabled = false;
         droppedItem._spriteRenderer.sprite = null;
         droppedItem._spriteRenderer.color = new Color(1,1,1,0);
 
