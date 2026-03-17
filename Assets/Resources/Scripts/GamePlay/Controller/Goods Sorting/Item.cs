@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using MyBox;
 using UnityEngine;
 
 public class Item : MonoBehaviour
@@ -17,23 +18,10 @@ public class Item : MonoBehaviour
     
     public Action<Item> OnAcceptDroppedItem;
 
+    private int _sortingOderDefault;
     private bool _isDrag;
     private bool _wasDropped;
     private Vector3 _startPos;
-
-    private void Start()
-    {
-        /*if (_isEmpty)
-        {
-            _itemType = ItemType.None;
-            _spriteRenderer.sprite = null;
-            _spriteRenderer.color = new Color(1,1,1,0);
-        }
-        else
-        {
-            _startPos = transform.position;
-        }*/
-    }
 
     public void Init(ItemType itemType, Sprite sprite)
     {
@@ -52,7 +40,7 @@ public class Item : MonoBehaviour
             _spriteRenderer.enabled = true;
             _spriteRenderer.sprite = sprite;
             _startPos = transform.position;
-
+            _sortingOderDefault = _spriteRenderer.sortingOrder;
         }
     }
 
@@ -63,7 +51,14 @@ public class Item : MonoBehaviour
             .OnComplete(()=> Destroy(gameObject));
     }
 
-    // ================= DRAG =================
+    public void Active(bool value)
+    {
+        _collider.enabled = value;
+        float alpha = value ? 1 : 0.5f;
+        _spriteRenderer.SetAlpha(alpha);
+    }
+
+    #region DragAndDrop
 
     private void OnMouseDown()
     {
@@ -71,6 +66,7 @@ public class Item : MonoBehaviour
 
         _isDrag = true;
         _startPos = transform.position;
+        _spriteRenderer.sortingOrder += 100;
     }
 
     private void OnMouseDrag()
@@ -95,9 +91,9 @@ public class Item : MonoBehaviour
 
         _isDrag = false;
         _wasDropped = false;
+        _spriteRenderer.sortingOrder = _sortingOderDefault;
     }
 
-    // ================= DROP =================
 
     private void CheckDrop()
     {
@@ -129,6 +125,8 @@ public class Item : MonoBehaviour
             }
         }
     }
+    
+    #endregion DragAndDrop
 
     private void AcceptDroppedItem(Item droppedItem)
     {

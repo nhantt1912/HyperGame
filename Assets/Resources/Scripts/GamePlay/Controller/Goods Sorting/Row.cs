@@ -8,7 +8,7 @@ public class Row : MonoBehaviour
 {
     [SerializeField] private List<Item> _listItem;
     [SerializeField] private Transform _tfParent;
-    
+
     public Action OnCollectRow;
 
     private void Start()
@@ -31,6 +31,19 @@ public class Row : MonoBehaviour
 
             _listItem.Add(item);
         }
+    }
+
+    public void SetActiveRow(bool value)
+    {
+        foreach (var item in _listItem)
+        {
+            item.Active(value);
+        }
+    }
+
+    public void MoveNextPosition()
+    {
+        transform.DOLocalMoveY(transform.localPosition.y - 0.1f, 0.1f);
     }
 
     private void OnAcceptDropItem(Item obj)
