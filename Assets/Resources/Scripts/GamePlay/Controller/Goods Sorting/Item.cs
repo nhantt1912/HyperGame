@@ -9,6 +9,7 @@ public class Item : MonoBehaviour
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Collider2D _collider;
 
+    private Transform _tfParent;
     public ItemType ItemType => _itemType;
 
     [SerializeField] private bool _isEmpty;
@@ -42,6 +43,7 @@ public class Item : MonoBehaviour
             _startPos = transform.position;
             _sortingOderDefault = _spriteRenderer.sortingOrder;
         }
+        _tfParent = transform.parent;
     }
 
     public void OnCollect()
@@ -66,6 +68,7 @@ public class Item : MonoBehaviour
 
         _isDrag = true;
         _startPos = transform.position;
+        transform.SetParent(null);
         _spriteRenderer.sortingOrder += 100;
     }
 
@@ -91,6 +94,7 @@ public class Item : MonoBehaviour
 
         _isDrag = false;
         _wasDropped = false;
+        transform.SetParent(_tfParent);
         _spriteRenderer.sortingOrder = _sortingOderDefault;
     }
 
@@ -108,17 +112,10 @@ public class Item : MonoBehaviour
 
             if (target.IsEmpty)
             {
-                ItemType droppedType = _itemType;
-
                 target.AcceptDroppedItem(this);
                 FinalizeSourceAfterDrop(this);
 
                 OnDropItem?.Invoke();
-
-                EventManager.Invoke(new Goods_Sorting.EventDefine.OnDropItem
-                {
-                    itemType = droppedType
-                });
 
                 _wasDropped = true;
                 return;
@@ -142,7 +139,6 @@ public class Item : MonoBehaviour
 
     private void FinalizeSourceAfterDrop(Item droppedItem)
     {
-        
         droppedItem._itemType = ItemType.None;
         droppedItem._isEmpty = true;
 
@@ -151,6 +147,8 @@ public class Item : MonoBehaviour
         droppedItem._spriteRenderer.color = new Color(1,1,1,0);
 
         droppedItem.ReturnToStart();
+        
+        OnAcceptDroppedItem?.Invoke(droppedItem);
     }
 
     private void ReturnToStart(Action onComplete = null)

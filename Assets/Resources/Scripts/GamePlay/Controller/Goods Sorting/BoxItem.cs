@@ -27,11 +27,14 @@ public class BoxItem : MonoBehaviour
     private void CollectRow()
     {
         if(_rowIndex >= _listRow.Count - 1) return;
-        _rowIndex++;
+        _listRow.RemoveAt(_rowIndex);
         _listRow[_rowIndex].SetActiveRow(true);
         DOVirtual.DelayedCall(0.3f, () =>
         {
-            _listRow[_rowIndex].MoveNextPosition();
+           foreach (var row in _listRow)
+           {
+               row.MoveNextPosition();
+           }
         });
     }
     

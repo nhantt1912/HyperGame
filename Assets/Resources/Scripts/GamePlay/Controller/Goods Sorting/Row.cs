@@ -43,12 +43,12 @@ public class Row : MonoBehaviour
 
     public void MoveNextPosition()
     {
-        transform.DOLocalMoveY(transform.localPosition.y - 0.1f, 0.1f);
+        transform.DOLocalMoveY(transform.localPosition.y - 0.2f, 0.1f);
     }
 
     private void OnAcceptDropItem(Item obj)
     {
-        Debug.Log(" Item Hold : " + obj);
+        Debug.Log(" Item Hold : " + obj + " Row : " + name);
         CheckRow();
     }
     
@@ -62,7 +62,7 @@ public class Row : MonoBehaviour
         }
         else
         {
-            Debug.Log("Not all items are same");
+            Debug.Log("Not all items are same" + name);
         }
     }
     
@@ -89,7 +89,7 @@ public class Row : MonoBehaviour
 
         var firstType = firstItem.ItemType;
         
-        if(firstType == ItemType.None) return false;
+      //  if(firstType == ItemType.None) return false;
         
         foreach (var item in _listItem)
         {
@@ -102,5 +102,6 @@ public class Row : MonoBehaviour
 
         return true;
     }
+    
     
 }
