@@ -54,9 +54,6 @@ public class RoundController : MonoBehaviour
             {
                 int editorY = _height - 1 - y;
 
-                /*if (_listSkipCells.Contains(new Vector2Int(x, editorY)))
-                    continue;*/
-
                 BoxDataSO data = _levelData.GetBox(x, editorY);
 
                 if (data == null)
