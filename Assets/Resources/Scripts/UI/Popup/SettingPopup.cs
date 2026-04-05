@@ -22,20 +22,44 @@ public class SettingPopup : UIBase
     [SerializeField] private Button _homeButton;
     [SerializeField] private Button _resumeButton;
     
+    protected override void Awake()
+    {
+        base.Awake();
+        // register this scene-placed popup with manager so manager can control it
+        PopupManager.Instance.RegisterInstance(PopupType.Setting, this);
+    }
+
     private void Start()
     {
-        exitButton.onClick?.AddListener(OnHide);
+        exitButton.onClick?.AddListener(OnExitClicked);
         musicButton.onClick?.AddListener(OnClickMusic);
         soundButton.onClick?.AddListener(OnClickSound);
         vibrationButton.onClick?.AddListener(OnClickVibration);
         _homeButton?.onClick?.AddListener(OnClickHome);
-        _resumeButton?.onClick?.AddListener(OnHide);
+        _resumeButton?.onClick?.AddListener(OnResumeClicked);
+    }
+
+    private void OnDestroy()
+    {
+        // unregister to avoid stale references in manager
+        PopupManager.Instance.UnregisterInstance(PopupType.Setting, this);
+    }
+
+    private void OnExitClicked()
+    {
+        // delegate closing to manager so it can handle modal stack / lifecycle
+        PopupManager.Instance.Close(PopupType.Setting);
+    }
+
+    private void OnResumeClicked()
+    {
+        PopupManager.Instance.Close(PopupType.Setting);
     }
 
     private void OnClickHome()
     {
         EventManager.Invoke(new EventDefine.OnBackHome());
-        OnHide();
+        PopupManager.Instance.Close(PopupType.Setting);
     }
 
     public override void OnShow()

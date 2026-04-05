@@ -20,6 +20,8 @@ public class WinPopup : PopupBase
     private void Start()
     {
         Debug.Log("Win Popup");
+        // register scene-placed win popup with PopupManager so it can be shown via manager
+        PopupManager.Instance.RegisterInstance(PopupType.Win, this);
         homeBTN.onClick?.AddListener(OnClickHomeBTN);
         nextBTN.onClick?.AddListener(OnNextLevel);
         EventManager.AddListener<EventDefine.OnLevelComplete>(OnLevelComplete);

@@ -6,12 +6,13 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class GamePlayUIController : MonoBehaviour
+public class GamePlayUIController : MonoBehaviour 
 {
     [SerializeField] private Button _nextLevelButton;
     [SerializeField] private Button _replayButton;
 
     [SerializeField] private RectTransform _rectTransformNextLevelButton;
+    
     [SerializeField] private RectTransform _rectTransformReplayButton;
     
     private Tween _tweenMoveNextLevelButton;

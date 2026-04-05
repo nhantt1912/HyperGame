@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour
     
     private void OnClickSetting()
     {
-        
+        PopupManager.Instance.Show(PopupType.Setting);
     }
 
     private void OnBackHome(EventDefine.OnBackHome obj)

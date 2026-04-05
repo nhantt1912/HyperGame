@@ -5,14 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="543f7491-7f67-422e-b913-e3e75569b067" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/Manager/PopupManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/Manager/PopupManager.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.HyperGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.HyperGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/GoodSorting Level Prefabs/Box.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/GoodSorting Level Prefabs/Box.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Controller/Goods Sorting/BoxItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Controller/Goods Sorting/BoxItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Controller/Goods Sorting/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Controller/Goods Sorting/Item.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Controller/Goods Sorting/RoundController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Controller/Goods Sorting/RoundController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Controller/Goods Sorting/Row.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/GamePlay/Controller/Goods Sorting/Row.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/Windown Tool Editor/Data Box 2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/Windown Tool Editor/Data Box 2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/Windown Tool Editor/Data Goods Sorting.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/Windown Tool Editor/Data Goods Sorting.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Asset/Good Sorting/New Sprite Atlas.spriteatlas" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Asset/Good Sorting/New Sprite Atlas.spriteatlas" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/Controller/GamePlayUIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/Controller/GamePlayUIController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/Manager/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/Manager/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/UI/Popup/SettingPopup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/UI/Popup/SettingPopup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scripts/UI/Popup/WinPopup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scripts/UI/Popup/WinPopup.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GamePlay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GamePlay.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +23,12 @@
   </component>
   <component name="CopilotPersistence">
     <persistenceIdMap>
+      <entry key="_C:/DEV/Project/HyperGame" value="3BveCxfYzrLPVK5bOmgGl3ykKJ7" />
       <entry key="_D:/Cocos/GitHub/HyperGame" value="38IvAy8qtbHWgF2E3EWIxoginFW" />
     </persistenceIdMap>
+  </component>
+  <component name="CopilotUserSelectedChatMode">
+    <option name="chatModeId" value="Agent" />
   </component>
   <component name="CopilotUserSelectedModel">
     <selectedModels>
@@ -60,40 +65,43 @@
   &quot;keyToString&quot;: {
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;CodeLensConfigurable&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\Unity\2021.3.45f2\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.45f2\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath D:\Cocos\GitHub\HyperGame -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="D:\Cocos\GitHub\HyperGame" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="ENV_FILE_PATHS" value="" />
       <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="PTY_MODE" value="Auto" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\Unity\2021.3.45f2\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.45f2\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath D:\Cocos\GitHub\HyperGame -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="D:\Cocos\GitHub\HyperGame" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="ENV_FILE_PATHS" value="" />
       <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="PTY_MODE" value="Auto" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
@@ -104,10 +112,9 @@
       <option name="selectedOptions">
         <list />
       </option>
-      <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
@@ -118,7 +125,9 @@
       <option name="selectedOptions">
         <list />
       </option>
-      <option name="useMixedMode" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to" type="UnityDevicePlayer" factoryName="UnityAttachToDevicePlayer">
       <method v="2" />
     </configuration>
   </component>
@@ -149,6 +158,8 @@
       <workItem from="1773760830522" duration="2543000" />
       <workItem from="1773767936695" duration="1599000" />
       <workItem from="1773933474982" duration="4651000" />
+      <workItem from="1775373674274" duration="118000" />
+      <workItem from="1775373830980" duration="2333000" />
     </task>
     <servers />
   </component>
